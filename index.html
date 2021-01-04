@@ -166,10 +166,6 @@
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
-      <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">分类</span>
-      </div>
   </nav>
 </div>
 
@@ -202,7 +198,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://ryanchromium.github.io/2020/12/27/Coincidance-in-Math/">
+    <link itemprop="mainEntityOfPage" href="https://ryanchromium.github.io/2021/01/04/Coincidance-in-Math/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -219,7 +215,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/12/27/Coincidance-in-Math/" class="post-title-link" itemprop="url">关于Pi和e的巧合</a>
+            <a href="/2021/01/04/Coincidance-in-Math/" class="post-title-link" itemprop="url">关于Pi和e的巧合</a>
         </h2>
 
         <div class="post-meta-container">
@@ -229,24 +225,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2020-12-27 00:03:41" itemprop="dateCreated datePublished" datetime="2020-12-27T00:03:41-06:00">2020-12-27</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-03 20:17:48" itemprop="dateModified" datetime="2021-01-03T20:17:48-06:00">2021-01-03</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
-        </span>
+      <time title="创建时间：2021-01-04 14:48:58 / 修改时间：14:58:40" itemprop="dateCreated datePublished" datetime="2021-01-04T14:48:58-06:00">2021-01-04</time>
     </span>
 
   
@@ -260,7 +241,6 @@
     
     <div class="post-body" itemprop="articleBody">
           <hr>
-<hr>
 <p>今天在网上偶然看到一个数学中的巧合：</p>
 <script type="math/tex; mode=display">
 \pi^4+\pi^5\approx e^6</script><p>看到之后的第一反应是要去验证一下在多大程度上是近似相等的：</p>
@@ -278,6 +258,10 @@ e^6= 403.428793492735 \\
 <p>更进一步的思考是，在一定范围内，如[0,200]，是否存在一组自然数$a,b,c$，使得相对误差</p>
 <script type="math/tex; mode=display">
 \frac{\Delta}{e^c}=\frac{\pi^a+\pi^b-e^c}{e^c}</script><p>更小呢？</p>
+<p>我们使用遍历法将所有的$\Delta$计算出来，得出下图：</p>
+<p><img src="Delta.png" alt=""></p>
+<p>可以发现，在[0,200]范围内，(a,b,c)=(4,5,6)是使得误差最小的组合。次小的组合是(a,b,c)=(146,152,174)，这一组合的相对误差为1e-5，比(4,5,6)高出两个数量级。</p>
+<p>这个巧合背后是否有一定的数学原理可以解释呢？我暂时还没有找到任何可以参考的资料，希望以后有缘可以看到关于此式的更多的讨论。</p>
 
       
     </div>

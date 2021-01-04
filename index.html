@@ -87,7 +87,11 @@
   </style>
 </noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
   <div class="headband"></div>
@@ -225,10 +229,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2020-12-27 00:03:41 / 修改时间：01:09:06" itemprop="dateCreated datePublished" datetime="2020-12-27T00:03:41-06:00">2020-12-27</time>
+      <time title="创建时间：2020-12-27 00:03:41" itemprop="dateCreated datePublished" datetime="2020-12-27T00:03:41-06:00">2020-12-27</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-01-03 20:12:16" itemprop="dateModified" datetime="2021-01-03T20:12:16-06:00">2021-01-03</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -251,12 +261,21 @@
     <div class="post-body" itemprop="articleBody">
           <hr>
 <hr>
-<p>今天在网上偶然看到一个数学中的巧合：<br>$$<br>\pi^4+\pi^5\approx e^6<br>$$<br>看到之后的第一反应是要去验证一下在多大程度上是近似相等的：<br>$$<br>\pi^4+\pi^5= 403.4287758192838 \</p>
-<p>e^6= 403.428793492735 \</p>
-<p>\Delta = \pi^4 + \pi^5 - e^6 =<br>-1.7673451168320e-05\</p>
-<p>\frac{\Delta}{403.4288}&lt;10^{-7}<br>$$<br>看到这个精确程度我是非常吃惊的，因为在直觉上等式的左右是几乎没有关联性的。但相对误差却小于$10^{-7}$，在我所能遇到的绝大多数情况中，这个误差小到可以认为是零。</p>
-<p>更进一步的思考是，在一定范围内，如[0,200]，是否存在一组自然数$a,b,c$，使得相对误差<br>$$<br>\frac{\Delta}{e^c}=\frac{\pi^a+\pi^b-e^c}{e^c}<br>$$</p>
-<p>更小呢？</p>
+<p>今天在网上偶然看到一个数学中的巧合：</p>
+<script type="math/tex; mode=display">
+\pi^4+\pi^5\approx e^6</script><p>看到之后的第一反应是要去验证一下在多大程度上是近似相等的：</p>
+<script type="math/tex; mode=display">
+\pi^4+\pi^5= 403.4287758192838 \\
+
+e^6= 403.428793492735 \\
+
+\Delta = \pi^4 + \pi^5 - e^6 = 
+-1.7673451168320e-05\\
+
+\frac{\Delta}{403.4288}<10^{-7}</script><p>看到这个精确程度我是非常吃惊的，因为在直觉上等式的左右是几乎没有关联性的。但相对误差却小于$10^{-7}$，在我所能遇到的绝大多数情况中，这个误差小到可以认为是零。</p>
+<p>更进一步的思考是，在一定范围内，如[0,200]，是否存在一组自然数$a,b,c$，使得相对误差</p>
+<script type="math/tex; mode=display">
+\frac{\Delta}{e^c}=\frac{\pi^a+\pi^b-e^c}{e^c}</script><p>更小呢？</p>
 
       
     </div>
@@ -357,6 +376,52 @@
 
 
   
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.0/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

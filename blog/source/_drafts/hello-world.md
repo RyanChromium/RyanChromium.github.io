@@ -36,3 +36,15 @@ $ hexo deploy
 ```
 
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
+
+### Delete a post
+
+```bash
+delete the post under source/_post folder
+$ hexo clean
+$ hexo g
+$ hexo d
+```
+
+
+

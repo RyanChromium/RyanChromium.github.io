@@ -3,9 +3,91 @@
   
     
     <entry>
+      <title><![CDATA[已读及待阅读(持续更新)]]></title>
+      <url>/2021/01/06/ResourceSummary/</url>
+      <content type="html"><![CDATA[<hr>
+<p>一些已读和待阅读的网页。</p>
+<a id="more"></a>
+<h1 id="计算机"><a href="#计算机" class="headerlink" title="计算机"></a>计算机</h1><ol>
+<li>The missing semester of your CS education 中文版：<a href="https://missing-semester-cn.github.io/">https://missing-semester-cn.github.io/</a></li>
+</ol>
+<h1 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h1><ol>
+<li>卡钦斯基：论工业社会及其未来(中英对照)：<a href="https://z.arlmy.me/Wiki/library/Original_Kaczynski_IndustrialSocietyAndItsFuture.html">https://z.arlmy.me/Wiki/library/Original_Kaczynski_IndustrialSocietyAndItsFuture.html</a></li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 笔记 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Git学习笔记]]></title>
+      <url>/2021/01/05/Git-Intro/</url>
+      <content type="html"><![CDATA[<hr>
+<p>在软件的开发过程中，版本控制是一件极为重要的事—-因为软件的开发不是一蹴而就的，是一个不断迭代的过程。在迭代的过程中，软件的每个版本都会增删功能，版本控制所要做的就是如实的备份每个版本，记录每个版本的功能以及是谁编写的某部分代码。在诸多现代版本控制系统(VCSs)中，Git无疑是其中最为常见的一个标准。</p>
+<a id="more"></a>
+<p>从第一次接触Git到现在已经三四年，但之前一直只是机械的记住命令从而使用，没有更深入的了解。直到最近才开始逐渐了解Git背后的机理，并在此对学习进行一个总结。</p>
+<h2 id="Git的数据存储"><a href="#Git的数据存储" class="headerlink" title="Git的数据存储"></a>Git的数据存储</h2><h3 id="快照"><a href="#快照" class="headerlink" title="快照"></a>快照</h3><p>在Git存储的数据中，一种是文件(Blob对象)，就是我们的代码、文档和数据等等，是我们需要存储的部分，另一种是用来描述文件之间关系的对象，即目录(Tree对象)。需要注意的是，这两者都是我们的原始数据，至此还未涉及Git的结构。</p>
+<p>一般我们将目录的最顶端，即树的根，称作一个快照。我们只需要知道通过一个快照，我们可以定位一组完整的文件。在使用Git时，我们一般会将一组完整的文件进行一次提交，故就我所遇见过的情况来说，快照和提交是可以互换的说法。</p>
+<h3 id="关联快照"><a href="#关联快照" class="headerlink" title="关联快照"></a>关联快照</h3><p>接下里Git要做的，就是将一次次的提交关联起来。Git中，提交们组成了一个“有向无环图”。无需在意这个名称的严格定义，只需要知道，这个结构保证了我们在回溯开发历史时，可以找到任意一个版本是由哪个版本修改而来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- language: lang-none --&gt;</span><br><span class="line">O &lt;- O &lt;- O &lt;- O &lt;- O &lt;- O &lt;- O</span><br><span class="line">          ^             &#x2F;</span><br><span class="line">           \           v</span><br><span class="line">            O &lt;- O &lt;- O &lt;- O</span><br></pre></td></tr></table></figure>
+<p>如上图所示，每个”O”代表一次提交，箭头指向的是每个提交的“父辈”，同时沿着图，不会出现任何的循环。当一个提交有多个“父辈”时，表示它由这两个提交merge得到。</p>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>在搭建这个图时，Git并不会将每个文件完整的储存下来，而是只存储文件的Hash之和。当我们需要调用某个提交时，可以通过这个Hash值索引到我们需要的文件。为了方便人们记忆，我们为Hash值起了一个对人类来说可读的名字(例如master等)，这个名字就是引用。</p>
+<p>同时我们也需要知道当前我们所在的是哪个提交，故在我们当前的位置处，有一个特殊的索引，叫做“Head”。</p>
+<h3 id="数据存储总结"><a href="#数据存储总结" class="headerlink" title="数据存储总结"></a>数据存储总结</h3><p>在Git的硬盘上，真正被存储的文件分为两类，一类是我们的原始数据，另一类就是引用。Git几乎不会删除文件，在我们提交之后，Git会创建一个引用，放在Head引用之后。</p>
+<p>当我们创建一个分支时，只是创建了一个新的特殊引用，如NewFeature，指向某个我们指定的引用,如Old，并将之后新提交所对应的引用放在NewFeature之后。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- language: lang-none --&gt;</span><br><span class="line">O &lt;- O &lt;- Old &lt;- O &lt;- O &lt;- O &lt;- O</span><br><span class="line">           ^          </span><br><span class="line">            \          </span><br><span class="line">             NewFeature &lt;- O &lt;- O </span><br></pre></td></tr></table></figure>
+<h2 id="暂存区"><a href="#暂存区" class="headerlink" title="暂存区"></a>暂存区</h2><p>暂存区是一个比较特殊的概念，它与Git如何存储数据无关，但在每次提交时都会用到。它的用处就像是海关，告诉git本次提交的是哪些文件。</p>
+<p>在提交时，最简单的方法是把所有的文件都一股脑的提交给git，这种情形下并不需要暂存区，因为本地文件与提交没有任何区别。但当我们在对文件的多个部分分别进行修改，且各个部分之间进度不一时，我们就需要将哪些需要提交，哪些不需要现在提交区分开来，这时就需要暂存区。</p>
+<h2 id="工作区、本地仓库与远程仓库"><a href="#工作区、本地仓库与远程仓库" class="headerlink" title="工作区、本地仓库与远程仓库"></a>工作区、本地仓库与远程仓库</h2><p>在实际工作中，我们通常会将完成的部分放在仓库，正在修改的部分放在工作区，以免混乱。同时我们也会在远程仓库做备份，便于分享。</p>
+<p>三者之间的关系以及常用操作如下图：</p>
+<p><img src="WorkSpace.jpg" alt=""></p>
+<h2 id="常用Git命令"><a href="#常用Git命令" class="headerlink" title="常用Git命令"></a>常用Git命令</h2><ol>
+<li><p>git init: 初始化一个本地的git仓库，所有的信息会放在.git目录下。</p>
+</li>
+<li><p>git add: 将文件加入暂存区</p>
+<p>—- git add . :将目前目录下所有文件加入暂存区</p>
+</li>
+<li><p>git reset HEAD <filename>: 将文件从暂存区删除</p>
+</li>
+<li><p>git commit: 将暂存区的文件进行提交，同时进行引用的命名。</p>
+<p>—- git commit -m “message”: Message处可以直接写commit id</p>
+</li>
+<li><p>git checkout branch: 切换到branch分支。PS:这会直接将branch分支恢复到与库一致。也可用来恢复到最新一次提交的状态。</p>
+</li>
+<li><p>git branch: 显示所有分支</p>
+<p>—- git branch <branch name>: 创建一个新的branch</p>
+</li>
+<li><p>git merge <branch>: 将branch合并到目前的分支</p>
+</li>
+<li><p>git push <remote name> <local branch>:<remote branch>:将local branch推到remote上的remote branch并更新remote上的引用</p>
+</li>
+</ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="https://missing-semester-cn.github.io/2020/version-control/">https://missing-semester-cn.github.io/2020/version-control/</a></li>
+<li><a href="https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-Git-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F">https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-Git-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F</a></li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 笔记 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[【转载】余亮：谁有能力在太空忧伤，谁就有能力在太空升华]]></title>
       <url>/2021/01/04/Yuliang-Universe/</url>
-      <content type="html"><![CDATA[<p>【本文作于2013年12月13日“嫦娥三号”发射前夕，那天科幻作者刘慈欣在现场观摩并写下了“<a href="http://www.guancha.cn/LiuCiXin/2013_12_13_192341.shtml">回答</a>”。2015年8月23日，刘慈欣代表作《三体》获得国际科幻文学大奖“雨果奖”最佳长篇小说奖。】</p>
+      <content type="html"><![CDATA[<hr>
+<p>【本文作于2013年12月13日“嫦娥三号”发射前夕，那天科幻作者刘慈欣在现场观摩并写下了“<a href="http://www.guancha.cn/LiuCiXin/2013_12_13_192341.shtml">回答</a>”。2015年8月23日，刘慈欣代表作《三体》获得国际科幻文学大奖“雨果奖”最佳长篇小说奖。】</p>
 <p>太空中正在发生两件相关的事情。</p>
 <p>一件在真实时空。中国“嫦娥三号”将在12月2日凌晨飞向月球，去赴亘古的万年之约。</p>
 <p>一件在梦想时空。美国电影《地心引力》正在全球上演，精彩故事和视觉体验令人交赞。</p>

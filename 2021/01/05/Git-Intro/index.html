@@ -17,28 +17,28 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"ryanchromium.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.14.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ranchen.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.14.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="在软件的开发过程中，版本控制是一件极为重要的事—-因为软件的开发不是一蹴而就的，是一个不断迭代的过程。在迭代的过程中，软件的每个版本都会增删功能，版本控制所要做的就是如实的备份每个版本，记录每个版本的功能以及是谁编写的某部分代码。在诸多现代版本控制系统(VCSs)中，Git是其中最为常见的一个标准。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git学习笔记">
-<meta property="og:url" content="https://ryanchromium.github.io/2021/01/05/Git-Intro/index.html">
+<meta property="og:url" content="https://ranchen.me/2021/01/05/Git-Intro/index.html">
 <meta property="og:site_name" content="Ran的博客">
 <meta property="og:description" content="在软件的开发过程中，版本控制是一件极为重要的事—-因为软件的开发不是一蹴而就的，是一个不断迭代的过程。在迭代的过程中，软件的每个版本都会增删功能，版本控制所要做的就是如实的备份每个版本，记录每个版本的功能以及是谁编写的某部分代码。在诸多现代版本控制系统(VCSs)中，Git是其中最为常见的一个标准。">
 <meta property="og:locale">
-<meta property="og:image" content="https://ryanchromium.github.io/2021/01/05/Git-Intro/WorkSpace.jpg">
+<meta property="og:image" content="https://ranchen.me/2021/01/05/Git-Intro/WorkSpace.jpg">
 <meta property="article:published_time" content="2021-01-05T22:01:03.000Z">
 <meta property="article:modified_time" content="2021-01-05T22:01:03.000Z">
 <meta property="article:author" content="Ran">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://ryanchromium.github.io/2021/01/05/Git-Intro/WorkSpace.jpg">
+<meta name="twitter:image" content="https://ranchen.me/2021/01/05/Git-Intro/WorkSpace.jpg">
 
 
-<link rel="canonical" href="https://ryanchromium.github.io/2021/01/05/Git-Intro/">
+<link rel="canonical" href="https://ranchen.me/2021/01/05/Git-Intro/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://ryanchromium.github.io/2021/01/05/Git-Intro/","path":"2021/01/05/Git-Intro/","title":"Git学习笔记"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://ranchen.me/2021/01/05/Git-Intro/","path":"2021/01/05/Git-Intro/","title":"Git学习笔记"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Git学习笔记 | Ran的博客</title>
@@ -168,7 +168,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://ryanchromium.github.io/2021/01/05/Git-Intro/">
+    <link itemprop="mainEntityOfPage" href="https://ranchen.me/2021/01/05/Git-Intro/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -280,7 +280,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://ryanchromium.github.io/2021/01/05/Git-Intro/" title="Git学习笔记">https://ryanchromium.github.io/2021/01/05/Git-Intro/</a>
+      <a href="https://ranchen.me/2021/01/05/Git-Intro/" title="Git学习笔记">https://ranchen.me/2021/01/05/Git-Intro/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
